@@ -38,36 +38,42 @@ class PerfilWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextButton(onPressed: () => {
-                print("Clicou Detalhes")
-              },
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-      RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-                ))),
-                child: const Text('Detalhes', 
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: TextButton(onPressed: () => {
+                    print("Clicou Detalhes")
+                  },
+                    style: ButtonStyle(
+                      //backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                    ))),
+                    child: const Text('Detalhes', 
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white
+                    ),
+                    )),
                 ),
-                )),
+              ),
                 const Padding(padding: EdgeInsets.only(left: 15, right: 15)),
-              TextButton(onPressed: () => {
-                print("Clicou Contatos")
-              },
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                ))),
-                child: const Text('Contato',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white
-                ),)),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  child: TextButton(onPressed: () => {
+                    print("Clicou Contatos")
+                  },
+                    child: const Text('Contato',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white
+                    ),)),
+                ),
+              ),
             ]
           ),
           SizedBox(

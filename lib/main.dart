@@ -19,8 +19,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.dark,
       theme:ThemeData(
-        colorScheme: MaterialTheme.lightScheme()
+        colorScheme: MaterialTheme.darkScheme()
       ),
       home: DefaultTabController(
         length: 4,
