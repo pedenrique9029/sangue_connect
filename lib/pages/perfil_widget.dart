@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sangue_connect/data/listconquistas.dart';
 import 'package:sangue_connect/main.dart';
+import 'package:sangue_connect/models/conquista.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PerfilWidget extends StatelessWidget {
@@ -69,7 +71,7 @@ class PerfilWidget extends StatelessWidget {
             ]
           ),
           SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
+                width: MediaQuery.of(context).size.width * 0.9,
                 height: 500,
                 child: const InformationPerfil(),
             ),
@@ -96,9 +98,9 @@ class InformationPerfil extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            FrequenciaTab(),
+            const FrequenciaTab(),
             ConquistasTab()
           ],
         ),
@@ -149,7 +151,9 @@ class FrequenciaTab extends StatelessWidget {
 }
 
 class ConquistasTab extends StatelessWidget {
-  const ConquistasTab({super.key});
+  ConquistasTab({super.key});
+
+  List<Conquista> conquistas = ListConquistas().list_conquistas;
 
   @override
   Widget build(BuildContext context) {
@@ -159,20 +163,52 @@ class ConquistasTab extends StatelessWidget {
         height: 150,
         child: ListView.separated(
           separatorBuilder: (BuildContext context, int index) {
-            return const Divider( 
-              color: Colors.grey,
-              thickness: 1,
-              height: 16,
-            );
+            return const SizedBox(height: 15,);
           },
           itemBuilder: (context, index) {
-          return ListTile(
-            leading: const Icon(Icons.check_circle_outline, color: Colors.green, size: 20,),
-            title: Text("Conquista $index"),
-            subtitle: Text("Descricao $index"),
-            );
+          var conquista = conquistas[index];
+          return Opacity(
+            opacity: conquista.completed ? 1:0.45,
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 40, 1, 1),
+                            width: 5
+                          )
+                        ),
+                        child: ClipRRect(borderRadius: BorderRadius.circular(50), child: Image.asset(conquista.path_image, height: 75, width: 75,))),
+                    ),
+                    SizedBox(
+                      width: 295,
+                      child: Column(
+                        children: [
+                          Text(conquista.messagem, style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: const Color.fromARGB(255, 44, 44, 44)
+                          ),),
+                          Text(conquista.recompensa, style: TextStyle(
+                            fontSize: 14,
+                            color: const Color.fromARGB(255, 85, 85, 85)
+                          ),),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ),
+          );
         },
-        itemCount: 10,
+        itemCount: conquistas.length,
         ),
       ),
     );
