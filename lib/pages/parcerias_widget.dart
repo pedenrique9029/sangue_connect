@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PostosWidget extends StatelessWidget{
-  const PostosWidget({super.key});
+class ParceriasWidget extends StatelessWidget{
+  const ParceriasWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,13 @@ class PostosWidget extends StatelessWidget{
           return Padding(
             padding: const EdgeInsets.fromLTRB(8,0,0,0),
             child: ListTile(
-              leading: const Icon(Icons.local_hospital_outlined, color: Colors.green, size: 50,),
-              title: Text("Posto $index"),
+              leading: const Icon(Icons.add_business, color: Colors.green, size: 50,),
+              title: Text("Loja $index"),
               contentPadding: const EdgeInsets.all(5),
               subtitle: TextButton(
                 child: const Text("Ver Detalhes"),
                 onPressed: () => {
-                  print("Detalhes do posto $index")
+                  print("Detalhes da empresa $index")
                 },
                 ),
               ),
