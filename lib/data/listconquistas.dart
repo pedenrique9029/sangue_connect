@@ -12,7 +12,7 @@ class ListConquistas {
       messagem: "Você já fez sua segunda doação de sangue! Continue assim!",
       recompensa: "Aproveite 10% de desconto em farmácias parceiras",
       path_image: "./images/conquistas/2op.jfif",
-      completed: false
+      completed: true
     ),
     Conquista(
       messagem: "Parabéns, você completou 3 doações de sangue!",

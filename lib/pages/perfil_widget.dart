@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sangue_connect/data/listconquistas.dart';
 import 'package:sangue_connect/main.dart';
 import 'package:sangue_connect/models/conquista.dart';
+import 'package:sangue_connect/pages/detalhes_perfil.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PerfilWidget extends StatelessWidget {
@@ -43,7 +44,7 @@ class PerfilWidget extends StatelessWidget {
                 child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
                   child: TextButton(onPressed: () => {
-                    print("Clicou Detalhes")
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> const DetalhesPerfil()))
                   },
                     style: ButtonStyle(
                       //backgroundColor: WidgetStateProperty.all<Color>(Colors.black),
@@ -135,7 +136,7 @@ class FrequenciaTab extends StatelessWidget {
         locale: 'pt_Br',
         calendarBuilders: CalendarBuilders(
           markerBuilder: (context, day, events) {
-            if(day.day ==5 || day.day ==25 ) {
+            if(day.day ==5 && day.month==8 || day.day ==25 && day.month==10 ) {
               return const Stack(
                   alignment: Alignment.center,
                   children: [
@@ -196,14 +197,14 @@ class ConquistasTab extends StatelessWidget {
                       width: 295,
                       child: Column(
                         children: [
-                          Text(conquista.messagem, style: TextStyle(
+                          Text(conquista.messagem, style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: const Color.fromARGB(255, 44, 44, 44)
+                            color: Color.fromARGB(255, 44, 44, 44)
                           ),),
-                          Text(conquista.recompensa, style: TextStyle(
+                          Text(conquista.recompensa, style: const TextStyle(
                             fontSize: 14,
-                            color: const Color.fromARGB(255, 85, 85, 85)
+                            color: Color.fromARGB(255, 85, 85, 85)
                           ),),
                         ],
                       ),

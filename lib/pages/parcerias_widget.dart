@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sangue_connect/data/list_loja.dart';
+import 'package:sangue_connect/pages/detalhes_lojas.dart';
 
 class ParceriasWidget extends StatelessWidget{
   const ParceriasWidget({super.key});
@@ -16,22 +18,44 @@ class ParceriasWidget extends StatelessWidget{
             );
           },
           itemBuilder: (context, index) {
+          var loja = ListLoja().listLojas[index];
           return Padding(
-            padding: const EdgeInsets.fromLTRB(8,0,0,0),
-            child: ListTile(
-              leading: const Icon(Icons.add_business, color: Colors.green, size: 50,),
-              title: Text("Loja $index"),
-              contentPadding: const EdgeInsets.all(5),
-              subtitle: TextButton(
-                child: const Text("Ver Detalhes"),
-                onPressed: () => {
-                  print("Detalhes da empresa $index")
-                },
+            padding: const EdgeInsets.all(5),
+            child: Card(
+             child: Row(
+               children: [
+                const SizedBox(width: 10,),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset(loja.imagePath, height: 80, width: 80,)),
+                const SizedBox(width: 10,),
+                SizedBox(
+                  width: 350,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 10,),
+                      Text(loja.nome, style: const TextStyle(fontSize: 16, color: Colors.black),),
+                      const SizedBox(height: 5,),
+                      Text(loja.descricao),
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Center(
+                     child: TextButton(
+                        child: const Text("Ver Detalhes"),
+                        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> DetalhesLojas(loja: loja))),
+                        ),
+                   ),
+                 ),
+                    ]
+                  ),
                 ),
+               ],
+             ),
               ),
           );
         },
-        itemCount: 5,
+        itemCount: ListLoja().listLojas.length,
       ),
     );
   }

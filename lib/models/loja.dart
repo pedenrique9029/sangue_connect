@@ -1,5 +1,3 @@
-import 'package:sangue_connect/models/posto.dart';
-
 class Loja {
   String nome;
   String descricao;
