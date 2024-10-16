@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme:ThemeData(
-        colorScheme: MaterialTheme.darkScheme()
+        colorScheme: MaterialTheme.lightScheme()
       ),
       home: DefaultTabController(
         length: 4,

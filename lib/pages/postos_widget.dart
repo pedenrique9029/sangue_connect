@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sangue_connect/data/list_postos.dart';
 
 class PostosWidget extends StatelessWidget{
   const PostosWidget({super.key});
@@ -16,22 +17,38 @@ class PostosWidget extends StatelessWidget{
             );
           },
           itemBuilder: (context, index) {
+          var posto = ListPostos().listPostos[index];
           return Padding(
-            padding: const EdgeInsets.fromLTRB(8,0,0,0),
-            child: ListTile(
-              leading: const Icon(Icons.local_hospital_outlined, color: Colors.green, size: 50,),
-              title: Text("Posto $index"),
-              contentPadding: const EdgeInsets.all(5),
-              subtitle: TextButton(
-                child: const Text("Ver Detalhes"),
-                onPressed: () => {
-                  print("Detalhes do posto $index")
-                },
+            padding: const EdgeInsets.all(5),
+            child: Card(
+             child: Row(
+               children: [
+                SizedBox(width: 10,),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset(posto.imagePath, height: 80, width: 80,)),
+                SizedBox(width: 10,),
+                SizedBox(
+                  width: 350,
+                  child: Column(
+                    children: [
+                      Text(posto.nome, style: TextStyle(fontSize: 16, color: Colors.black),),
+                      Text(posto.descricao),
+                 TextButton(
+                    child: const Text("Ver Detalhes"),
+                    onPressed: () => {
+                      print("Detalhes do posto $index")
+                    },
+                    ),
+                    ]
+                  ),
                 ),
+               ],
+             ),
               ),
           );
         },
-        itemCount: 5,
+        itemCount: ListPostos().listPostos.length,
       ),
     );
   }

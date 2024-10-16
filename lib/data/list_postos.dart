@@ -12,7 +12,7 @@ class ListPostos {
     ),
     Posto(
       nome: "Hospital Borcele",
-      descricao: "O Hospital Borcele é voltado para a coleta de sangue, proporcionando um espaço seguro e confortável para os doadores. Com profissionais capacitados, o hospital agiliza o processo de doação, desempenhando um papel essencial no suporte a pacientes que dependem de transfusões para tratamentos médicos.", imagePath: "./images/postos/hospital_piedade.jpg"
+      descricao: "O Hospital Borcele é voltado para a coleta de sangue, proporcionando um espaço seguro e confortável para os doadores. Com profissionais capacitados, o hospital agiliza o processo de doação, desempenhando um papel essencial no suporte a pacientes que dependem de transfusões para tratamentos médicos.", imagePath: "./images/postos/hospital_borcele.jpg"
     ),
     Posto(
       nome: "Hospital Cruz Vermelha",
